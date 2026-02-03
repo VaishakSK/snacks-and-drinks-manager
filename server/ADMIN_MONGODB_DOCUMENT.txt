@@ -1,0 +1,40 @@
+
+==============================================
+  MONGODB ADMIN USER DOCUMENT
+==============================================
+
+Copy this ENTIRE JSON document and paste it into MongoDB Atlas:
+
+{
+  "role": "admin",
+  "name": "Dvara Admin",
+  "email": "admin@dvara.com",
+  "passwordHash": "$2a$12$ibmqOk7UQD0UoArEPhMbsuaOYLy244BJ6rtG1xKnvPGrkj.ygESAW",
+  "isDisabled": false,
+  "createdAt": "2026-01-29T04:39:03.961Z",
+  "updatedAt": "2026-01-29T04:39:03.961Z"
+}
+
+==============================================
+  INSTRUCTIONS
+==============================================
+
+1. Go to MongoDB Atlas: https://cloud.mongodb.com/
+2. Click on your cluster (dmanager0)
+3. Click "Browse Collections"
+4. Find the "users" collection
+5. Click "INSERT DOCUMENT"
+6. Switch to the JSON view (if in table view)
+7. Paste the JSON above
+8. Click "Insert"
+
+==============================================
+  LOGIN CREDENTIALS
+==============================================
+
+Email: admin@dvara.com
+Password: Admin@123456
+
+IMPORTANT: Change the password after first login!
+
+==============================================
