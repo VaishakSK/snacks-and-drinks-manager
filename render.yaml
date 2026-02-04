@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: snacks-and-drinks-frontend
+    env: static
+    rootDir: client
+    buildCommand: npm ci --include=optional && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
