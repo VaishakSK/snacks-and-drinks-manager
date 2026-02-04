@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Link, Navigate, useSearchParams } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../shared/auth/AuthContext.jsx";
-import { API_BASE } from "../../shared/http/api.js";
 import { Banner, Field } from "../components/FormBits.jsx";
 import { SiteFooter, SiteHeader } from "../components/SiteFrame.jsx";
 
@@ -11,16 +10,6 @@ export function LoginPage() {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [params] = useSearchParams();
-
-  const externalError = params.get("error");
-  const externalMessage =
-    externalError === "account_rejected"
-      ? "Account request rejected. Please contact your admin."
-      : externalError === "oauth_failed"
-        ? "Google sign-in failed. Please try again."
-        : "";
-
   if (user) {
     const dest = user.approvalStatus && user.approvalStatus !== "approved" ? "/lobby" : "/app";
     return <Navigate to={dest} replace />;
@@ -59,7 +48,6 @@ export function LoginPage() {
         </div>
 
         <div style={{ marginTop: 16, display: "grid", gap: 14 }}>
-          {externalMessage ? <Banner kind="error" title="Could not sign in">{externalMessage}</Banner> : null}
           {error ? <Banner kind="error" title="Could not sign in">{error}</Banner> : null}
 
           <form onSubmit={onSubmit} className="row">
@@ -77,9 +65,6 @@ export function LoginPage() {
               <button className="btn" disabled={busy} type="submit">
                 {busy ? "Signing in..." : "Sign in"}
               </button>
-              <a className="btn secondary" href={`${API_BASE}/api/auth/google`}>
-                Continue with Google
-              </a>
               <Link className="btn danger" to="/register">
                 Create account
               </Link>

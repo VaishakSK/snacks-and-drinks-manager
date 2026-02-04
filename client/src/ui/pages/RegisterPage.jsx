@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../shared/auth/AuthContext.jsx";
-import { API_BASE } from "../../shared/http/api.js";
 import { Banner, Field } from "../components/FormBits.jsx";
 import { SiteFooter, SiteHeader } from "../components/SiteFrame.jsx";
 
@@ -25,11 +24,6 @@ export function RegisterPage() {
     setError("");
     setBusy(true);
     try {
-      if (role === "employee") {
-        window.location.href = `${API_BASE}/api/auth/google?role=employee`;
-        return;
-      }
-
       await registerEmail({
         role,
         name: name || undefined,
@@ -42,16 +36,6 @@ export function RegisterPage() {
     } finally {
       setBusy(false);
     }
-  }
-
-  function startGoogleSignup() {
-    setError("");
-    if (role === "admin" && !securityCode.trim()) {
-      setError("Admin security code required");
-      return;
-    }
-    const query = role === "admin" ? `?role=admin&securityCode=${encodeURIComponent(securityCode)}` : "?role=employee";
-    window.location.href = `${API_BASE}/api/auth/google${query}`;
   }
 
   return (
@@ -119,9 +103,6 @@ export function RegisterPage() {
             <div className="col-12 auth-actions">
               <button className="btn danger" disabled={busy} type="submit">
                 {busy ? "Creating..." : "Create account"}
-              </button>
-              <button className="btn secondary" type="button" onClick={startGoogleSignup}>
-                Continue with Google
               </button>
               <Link className="btn secondary" to="/login">
                 Back to sign in

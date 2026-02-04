@@ -6,7 +6,6 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import mongoose from "mongoose";
-import passport from "passport";
 
 import { buildAuthRouter } from "./modules/auth/auth.router.js";
 import { buildUsersRouter } from "./modules/users/users.router.js";
@@ -30,7 +29,6 @@ app.use(
 app.use(helmet());
 app.use(express.json({ limit: "1mb" }));
 app.use(cookieParser());
-app.use(passport.initialize());
 app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 app.use(
   rateLimit({

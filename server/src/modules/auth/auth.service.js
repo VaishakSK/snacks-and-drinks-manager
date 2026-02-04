@@ -50,7 +50,7 @@ export async function loginWithPassword({ email, password }) {
     throw err;
   }
   if (!user.passwordHash) {
-    const err = new Error("This account must sign in with Google");
+    const err = new Error("This account does not have a password set");
     err.statusCode = 400;
     throw err;
   }

@@ -53,10 +53,6 @@ export function AuthProvider({ children }) {
       async logout() {
         clearTokens();
         setUser(null);
-      },
-      async acceptOAuthTokens({ accessToken, refreshToken }) {
-        setTokens({ accessToken, refreshToken });
-        await loadMe();
       }
     };
   }, [user, loading, loadMe]);

@@ -3,7 +3,6 @@ import { AppLayout } from "./ui/AppLayout.jsx";
 import { LandingPage } from "./ui/pages/LandingPage.jsx";
 import { LoginPage } from "./ui/pages/LoginPage.jsx";
 import { RegisterPage } from "./ui/pages/RegisterPage.jsx";
-import { OAuthCallbackPage } from "./ui/pages/OAuthCallbackPage.jsx";
 import { ApprovalLobbyPage } from "./ui/pages/ApprovalLobbyPage.jsx";
 import { DaySelectionPage } from "./ui/pages/DaySelectionPage.jsx";
 import { WeekSelectionPage } from "./ui/pages/WeekSelectionPage.jsx";
@@ -20,7 +19,6 @@ export const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
   { path: "/login", element: <LoginPage /> },
   { path: "/register", element: <RegisterPage /> },
-  { path: "/oauth/callback", element: <OAuthCallbackPage /> },
   { path: "/lobby", element: <ApprovalLobbyPage /> },
   {
     path: "/app",
